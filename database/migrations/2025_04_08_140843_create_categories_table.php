@@ -9,23 +9,23 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('products', function (Blueprint $table) {
+        Schema::create('categories', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('country_id')->nullable()->constrained()->nullOnDelete();
-            $table->foreignId('category_id')->nullable()->constrained()->nullOnDelete();
-            $table->string('name_en');
+            $table->foreignId('group_id')->constrained()->onDelete('cascade');
+            $table->string('name_en')->nullable();
             $table->string('name_ar')->nullable();
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('products');
+        Schema::dropIfExists('categories');
     }
 };

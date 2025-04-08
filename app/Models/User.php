@@ -45,4 +45,12 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    /**
+     * Relationship with ProductApplication model
+     */
+    public function productApplications()
+    {
+        return $this->hasMany(ProductApplication::class);
+    }
 }

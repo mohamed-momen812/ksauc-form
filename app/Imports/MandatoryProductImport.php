@@ -2,48 +2,57 @@
 
 namespace App\Imports;
 
-use App\Models\{Country, Sector, Group, Category, Product, ProductType};
-use Maatwebsite\Excel\Row;
+use App\Models\{Sector, Group, Category, Product, ProductType};
 use Maatwebsite\Excel\Concerns\OnEachRow;
-use Maatwebsite\Excel\Concerns\WithHeadingRow;
+use Maatwebsite\Excel\Concerns\WithStartRow;
+use Maatwebsite\Excel\Concerns\WithMultipleSheets;
+use Maatwebsite\Excel\Row;
 
-class MandatoryProductImport implements OnEachRow, WithHeadingRow
+class MandatoryProductImport implements OnEachRow, WithStartRow, WithMultipleSheets
 {
+    public function sheets(): array
+    {
+        return [
+            // 'القائمة الالزامية' => $this, 
+            // 'الاصناف غير الطبية' => $this, 
+            'الاصناف الطبية' => $this,
+        ];
+    }
+    
+    public function startRow(): int
+    {
+        return 2; // Skip the header row
+    }
+
+
     public function onRow(Row $row)
     {
-
         $r = $row->toArray();
-        dd($r);
 
+        $sector = Sector::firstOrCreate([
+            'name_ar' => $r[3],
+            'name_en' => $r[4]
+            ]);
 
-        // التعديل حسب الأسماء الفعلية في الملف
-        $countryName = $r['country'] ?? null;
-        $sectorName = $r['sector'] ?? null;
-        $groupName = $r['group'] ?? null;
-        $categoryName = $r['category'] ?? null;
-        $productName = $r['product'] ?? null;
-        $itemType = $r['item_type'] ?? null;
+        $group = Group::firstOrCreate([
+            'name_ar' => $r[8],
+            'sector_id' => $sector->id,
+        ]);
 
-        if (!$countryName || !$sectorName || !$groupName || !$categoryName || !$productName) {
-            return; // تجاهل الصف لو ناقص أي حاجة مهمة
-        }
+        $category = Category::firstOrCreate([
+            'name_ar' => $r[6],
+            'group_id' => $group->id,
+        ]);
 
-        // إنشاء أو استرجاع السجلات
-        $country = Country::firstOrCreate(['name_en' => $countryName]);
-        $sector = Sector::firstOrCreate(['name_en' => $sectorName]);
-        $group = Group::firstOrCreate(['name_en' => $groupName, 'sector_id' => $sector->id]);
-        $category = Category::firstOrCreate(['name_en' => $categoryName, 'group_id' => $group->id]);
         $product = Product::firstOrCreate([
-            'name_en' => $productName,
-            'country_id' => $country->id,
+            'name_en' => $r[10],
+            'name_ar' => $r[11],
             'category_id' => $category->id,
         ]);
 
-        if (!empty($itemType)) {
-            ProductType::firstOrCreate([
-                'name_en' => $itemType,
-                'product_id' => $product->id,
-            ]);
-        }
-    }
+        ProductType::firstOrCreate([
+            'name_ar' => "القائمة الطبية",
+            'product_id' => $product->id,
+        ]);
+    }   
 }

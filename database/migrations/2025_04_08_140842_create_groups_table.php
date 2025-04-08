@@ -9,21 +9,23 @@ return new class extends Migration
     /**
      * Run the migrations.
      */
-    public function up(): void
+    public function up()
     {
-        Schema::create('countries', function (Blueprint $table) {
+        Schema::create('groups', function (Blueprint $table) {
             $table->id();
-            $table->string('name_en');
+            $table->foreignId('sector_id')->constrained()->onDelete('cascade');
+            $table->string('name_en')->nullable();
             $table->string('name_ar')->nullable();
             $table->timestamps();
         });
     }
+
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('countries');
+        Schema::dropIfExists('groups');
     }
 };
