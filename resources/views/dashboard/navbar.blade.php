@@ -208,17 +208,8 @@
                                 </a>
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
-
-                                    <form method="POST" action="{{ route('logout') }}">
-                                        @csrf
-                                        <x-dropdown-link :href="route('logout')"
-                                        onclick="event.preventDefault();
-                                            this.closest('form').submit();"
-                                            class="py-0 px-0">
-                                            <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                        <i class="icon-power mr-2"></i> Logout
-                                    </x-dropdown-link>
-                                </form>
+                                <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                                <i class="icon-power mr-2"></i> Logout
                                 </a>
                             </div>
                         </li>
