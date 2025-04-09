@@ -8,10 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class MandatoryProduct extends Model
 {
     use HasFactory;
+
+    protected $table = 'mandatory_requests';
     
     protected $guarded = [];
 
     protected $fillable = [
+        'id',
+        'user_id',
         'sector',
         'segment_no',
         'segment_title_ar',
@@ -40,4 +44,9 @@ class MandatoryProduct extends Model
         'manufacturer_local_content',
         'notes'
     ];
+
+    public function user()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

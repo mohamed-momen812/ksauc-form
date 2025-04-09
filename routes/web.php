@@ -3,6 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ExcelImportController;
 use App\Http\Controllers\MandatoryFormController;
+use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -28,11 +29,7 @@ Route::middleware(['auth', 'user'])->group(function () {
 
     Route::post('mandatory-form', [MandatoryFormController::class, 'store'])->name('mandatory.store');
 
-    Route::get('/orders', function () {
-        
-        // Fetch orders from the database or any other source
-        return view('dashboard-user.orders');
-    })->name('orders');
+    Route::get('/orders-user', [OrderController::class, 'userOrder'])->name('orders');
         
 });
 
@@ -49,8 +46,6 @@ Route::middleware(['auth', 'admin'])->group(function () {
     Route::get('/import', [ExcelImportController::class, 'create'])->name('import.create');
     Route::post('/import', [ExcelImportController::class, 'import'])->name('import.store');
     
-    Route::get('/tables', function () {
-        return view('dashboard-admin.tables');
-    })->name('tables');
+    Route::get('/orders-admin', [OrderController::class, 'adminOrder'])->name('orders');
 
 });

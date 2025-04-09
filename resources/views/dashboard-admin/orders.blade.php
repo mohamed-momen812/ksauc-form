@@ -19,7 +19,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include('dashboard-user.header')
+        @include('dashboard-admin.header')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -29,7 +29,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                @include('dashboard-user.navbar')
+                @include('dashboard-admin.navbar')
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->
@@ -52,6 +52,7 @@
                                     <thead>
                                         <tr>
                                             <th>Id</th>
+                                            <th>User</th>
                                             <th>Sector</th>
                                             <th>Segment No</th>
                                             <th>Segment Title (AR)</th>
@@ -85,6 +86,7 @@
                                         @foreach($orders as $order)
                                         <tr>
                                             <td>{{ $order->id }}</td>
+                                            <td>{{ $product->user?->name }}</td>
                                             <td>{{ $order->sector }}</td>
                                             <td>{{ $order->segment_no }}</td>
                                             <td>{{ $order->segment_title_ar }}</td>
@@ -116,6 +118,7 @@
                                         @endforeach
                                     </tbody>
                                 </table>
+                                
                             </div>
                         </div>
                     </div>

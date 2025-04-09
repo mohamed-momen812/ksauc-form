@@ -13,9 +13,9 @@ class MandatoryProductImport implements OnEachRow, WithStartRow, WithMultipleShe
     public function sheets(): array
     {
         return [
-            // 'القائمة الالزامية' => $this, 
+            'القائمة الالزامية' => $this, 
             // 'الاصناف غير الطبية' => $this, 
-            'الاصناف الطبية' => $this,
+            // 'الاصناف الطبية' => $this,
         ];
     }
     
@@ -51,12 +51,12 @@ class MandatoryProductImport implements OnEachRow, WithStartRow, WithMultipleShe
         ]);
 
         ProductType::firstOrCreate([
-            // 'name_ar' => "القائمة الالزامية",
-            // 'name_en' => "service",
+            'name_ar' => "القائمة الالزامية",
+            'name_en' => "service",
             // 'name_ar' => "الاصناف غير الطبية",
             // 'name_en' => "non_medical",
-            'name_ar' => "الاصناف الطبية",
-            'name_en' => "medical",
+            // 'name_ar' => "الاصناف الطبية",
+            // 'name_en' => "medical",
             'product_id' => $product->id,
         ]);
     }   
