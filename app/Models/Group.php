@@ -17,5 +17,10 @@ class Group extends Model
     {
         return $this->hasMany(Category::class);
     }
+
+    public function mandatoryRequests()
+    {
+        return $this->hasMany(MandatoryRequest::class);
+    }
 }
 

@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\MandatoryProduct;
+use App\Models\MandatoryRequest;
 use Illuminate\Http\Request;
 
 class OrderController extends Controller
@@ -10,13 +10,13 @@ class OrderController extends Controller
     //
     public function adminOrder()
     {
-        $orders = MandatoryProduct::all();
+        $orders = MandatoryRequest::all();
         return view('dashboard-admin.orders', compact( 'orders'));
     }
 
     public function userOrder()
     {
-        $orders = MandatoryProduct::where('user_id', auth()->user()->id);
+        $orders = MandatoryRequest::where('user_id', auth()->user()->id)->get();
         return view('dashboard-user.orders', compact( 'orders'));
     }
 }

@@ -48,76 +48,53 @@
                         </div>
                         <div class="card-body">
                             <div class="table-responsive">
-                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                <table class="table table-bordered" id="dataTable">
                                     <thead>
                                         <tr>
-                                            <th>Id</th>
-                                            <th>User</th>
-                                            <th>Sector</th>
-                                            <th>Segment No</th>
-                                            <th>Segment Title (AR)</th>
-                                            <th>Segment Title (EN)</th>
-                                            <th>Etimad Code</th>
-                                            <th>Commodity Title (AR)</th>
-                                            <th>Commodity Title (EN)</th>
-                                            <th>Commodity Definition (AR)</th>
-                                            <th>Commodity Definition (EN)</th>
-                                            <th>Group Code</th>
-                                            <th>Group Name</th>
-                                            <th>Section Code</th>
-                                            <th>Section Name (AR)</th>
-                                            <th>Section Name (EN)</th>
-                                            <th>Class Code</th>
-                                            <th>Class Name</th>
-                                            <th>Chapter Code</th>
-                                            <th>Chapter Name</th>
-                                            <th>Item Code</th>
-                                            <th>Item Name (EN)</th>
-                                            <th>Item Name (AR)</th>
-                                            <th>Technical Description (AR)</th>
-                                            <th>Technical Description (EN)</th>
-                                            <th>Price Ceiling</th>
-                                            <th>Effective Date</th>
-                                            <th>Manufacturer Local Content</th>
-                                            <th>Notes</th>
+                                            <th>ID</th>
+                                            <th>المستخدم</th>
+                                            <th>القطاع</th>
+                                            <th>المجموعة</th>
+                                            <th>الفئة</th>
+                                            <th>المنتج</th>
+                                            <th>بلد المصنع</th>
+                                            <th>اسم المصنع</th>
+                                            <th>نسبة التصنيع المحلي</th>
+                                            <th>نوع الصنف</th>
+                                            <th>الرمز الطبي</th>
+                                            <th>الوصف الطبي</th>
+                                            <th>الهاتف</th>
+                                            <th>الإيميل</th>
+                                            <th>المنطقة</th>
+                                            <th>العنوان</th>                                            
+                                            <th>ملاحظات</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         @foreach($orders as $order)
                                         <tr>
                                             <td>{{ $order->id }}</td>
-                                            <td>{{ $product->user?->name }}</td>
-                                            <td>{{ $order->sector }}</td>
-                                            <td>{{ $order->segment_no }}</td>
-                                            <td>{{ $order->segment_title_ar }}</td>
-                                            <td>{{ $order->segment_title_en }}</td>
-                                            <td>{{ $order->etimad_code }}</td>
-                                            <td>{{ $order->commodity_title_ar }}</td>
-                                            <td>{{ $order->commodity_title_en }}</td>
-                                            <td>{{ $order->commodity_definition_ar }}</td>
-                                            <td>{{ $order->commodity_definition_en }}</td>
-                                            <td>{{ $order->group_code }}</td>
-                                            <td>{{ $order->group_name }}</td>
-                                            <td>{{ $order->section_code }}</td>
-                                            <td>{{ $order->section_name_ar }}</td>
-                                            <td>{{ $order->section_name_en }}</td>
-                                            <td>{{ $order->class_code }}</td>
-                                            <td>{{ $order->class_name }}</td>
-                                            <td>{{ $order->chapter_code }}</td>
-                                            <td>{{ $order->chapter_name }}</td>
-                                            <td>{{ $order->item_code }}</td>
-                                            <td>{{ $order->item_name_en }}</td>
-                                            <td>{{ $order->item_name_ar }}</td>
-                                            <td>{{ $order->technical_description_ar }}</td>
-                                            <td>{{ $order->technical_description_en }}</td>
-                                            <td>{{ $order->price_ceiling }}</td>
-                                            <td>{{ $order->effective_date }}</td>
-                                            <td>{{ $order->manufacturer_local_content }}</td>
+                                            <td>{{ $order->user->name ?? '-' }}</td>
+                                            <td>{{ $order->sector->name_ar ?? '-' }}</td>
+                                            <td>{{ $order->group->name_ar ?? '-' }}</td>
+                                            <td>{{ $order->category->name_ar ?? '-' }}</td>
+                                            <td>{{ $order->product->name_ar ?? '-' }}</td>
+                                            <td>{{ $order->factory_country }}</td>
+                                            <td>{{ $order->factory_name }}</td>
+                                            <td>{{ $order->{'baseline-ratio'} }}</td>
+                                            <td>{{ $order->item_type }}</td>
+                                            <td>{{ $order->nupco_code }}</td>
+                                            <td>{{ $order->nupco_description }}</td>
+                                            <td>{{ $order->phone }}</td>
+                                            <td>{{ $order->email }}</td>
+                                            <td>{{ $order->region }}</td>
+                                            <td>{{ $order->address }}</td>
                                             <td>{{ $order->notes }}</td>
                                         </tr>
                                         @endforeach
                                     </tbody>
                                 </table>
+                                
                                 
                             </div>
                         </div>

@@ -12,4 +12,9 @@ class Sector extends Model
     {
         return $this->hasMany(Group::class);
     }
+
+    public function mandatoryRequests()
+    {
+        return $this->hasMany(MandatoryRequest::class);
+    }
 }

@@ -18,5 +18,10 @@ class Product extends Model
         return $this->hasMany(ProductType::class);
     }
 
+    public function mandatoryRequests()
+    {
+        return $this->hasMany(MandatoryRequest::class);
+    }
+
 }
 

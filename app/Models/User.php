@@ -47,16 +47,15 @@ class User extends Authenticatable
         ];
     }
 
-    /**
-     * Relationship with ProductApplication model
-     */
-    public function productApplications()
-    {
-        return $this->hasMany(ProductApplication::class);
-    }
-
     public function isAdmin()
     {
         return $this->role === 'admin';
     }
+
+    public function mandatoryRequests()
+    {
+        return $this->hasMany(MandatoryRequest::class);
+    }
+
+
 }
