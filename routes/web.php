@@ -11,35 +11,60 @@ Route::get('/', function () {
 
 require __DIR__.'/auth.php';
 
+// User Routs
 Route::middleware(['auth', 'user'])->group(function () {
-        Route::get('/mandatory-form', [MandatoryFormController::class, 'create'])->name('mandatory.form');
-        
-        Route::get('/api/groups/{sector}', [MandatoryFormController::class, 'getGroups']);
-        Route::get('/api/categories/{group}', [MandatoryFormController::class, 'getCategories']);
-        Route::get('/api/products/{category}', [MandatoryFormController::class, 'getProducts']);
+    // User Dashboard
+    Route::get('/dashboard-user', function () {
+        return view('dashboard-user.index');
+    })->name('dashboard.user');
 
-        Route::post('/form/store', [MandatoryFormController::class, 'store'])->name('mandatory.store');
-});
+    // Profile Routs
+    Route::get('/profile-user', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile-user', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile-user', [ProfileController::class, 'destroy'])->name('profile.destroy');
 
-
-
-Route::middleware(['auth', 'admin'])->group(function () {      
-        Route::get('/import', [ExcelImportController::class, 'create'])->name('import.create');
-        Route::post('/import', [ExcelImportController::class, 'import'])->name('import.store');
-        
-        Route::get('/dashboard', function () {
-            return view('dashboard.index');
-        })->name('dashboard');
-
-        Route::get('/tables', function () {
-            return view('dashboard.tables');
-        })->name('tables');
-
-        Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-        Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-        Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    // Form
+    Route::get('/mandatory-form', [MandatoryFormController::class, 'create'])->name('mandatory.form');
     
+    // get data
+    Route::get('/api/groups/{sector}', [MandatoryFormController::class, 'getGroups']);
+    Route::get('/api/categories/{group}', [MandatoryFormController::class, 'getCategories']);
+    Route::get('/api/products/{category}', [MandatoryFormController::class, 'getProducts']);
+
+    // store form
+    Route::post('/form/store', [MandatoryFormController::class, 'store'])->name('mandatory.store');
+
+    // get user order
+    Route::get('/orders', function () {
+        return view('dashboard-user.orders');
+    })->name('orders');
+        
 });
+
+
+// Admin Routs
+Route::middleware(['auth', 'admin'])->group(function () { 
+    // Admin Dashboard  
+    Route::get('/dashboard-admin', function () {
+        return view('dashboard-admin.index');
+    })->name('dashboard.admin');
+
+    // Profile Routs
+    Route::get('/profile-admin', [ProfileController::class, 'edit'])->name('profile.edit');
+    Route::patch('/profile-admin', [ProfileController::class, 'update'])->name('profile.update');
+    Route::delete('/profile-admin', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    
+    // Import Data
+    Route::get('/import', [ExcelImportController::class, 'create'])->name('import.create');
+    Route::post('/import', [ExcelImportController::class, 'import'])->name('import.store');
+    
+    // table
+    Route::get('/tables', function () {
+        return view('dashboard-admin.tables');
+    })->name('tables');
+
+});
+
 
 // Route::get('/form', function () {
 //     return view('form');

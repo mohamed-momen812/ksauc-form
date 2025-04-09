@@ -41,14 +41,24 @@
             <li class="nav-item">
                 <a class="nav-link" href="{{ url('/') }}">
                     <i class="fas fa-fw fa-home"></i>
-                    <span>Home</span></a>
+                    <span>Home</span>
+                </a>
             </li>
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
                 <a class="nav-link" href="{{ url('dashboard') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
+                    <span>Dashboard</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('import.create') }}">
+                    <i class="fas fa-fw fa-plus"></i>
+                    <span>Import Data</span>
+                </a>
             </li>
 
             <!-- Divider -->

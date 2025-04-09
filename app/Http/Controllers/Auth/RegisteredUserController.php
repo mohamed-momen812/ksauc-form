@@ -19,7 +19,7 @@ class RegisteredUserController extends Controller
      */
     public function create(): View
     {
-        return view('dashboard.register');
+        return view('register');
     }
 
     /**
@@ -47,6 +47,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('mandatory.form', absolute: false));
+        return redirect(route('dashboard.user', absolute: false));
     }
 }

@@ -16,7 +16,7 @@ class AuthenticatedSessionController extends Controller
      */
     public function create(): View
     {
-        return view('dashboard.login');
+        return view('login');
     }
 
     /**
@@ -29,10 +29,10 @@ class AuthenticatedSessionController extends Controller
         $request->session()->regenerate();
 
         if (auth()->user()->isAdmin()) {
-            return redirect()->intended('/dashboard');
+            return redirect()->intended('/dashboard-admin');
         }
     
-        return redirect()->intended('/mandatory-form');
+        return redirect()->intended('/dashboard-user');
     }
 
     /**

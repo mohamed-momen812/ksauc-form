@@ -3,7 +3,11 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
     <!-- Sidebar -->
-    @include('dashboard.header');
+    @if (auth()->user()->isAdmin()) 
+        @include('dashboard-admin.header')
+    @elseif(!auth()->user()->isAdmin()) 
+        @include('dashboard-user.header')
+    @endif
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
@@ -13,7 +17,11 @@
         <div id="content">
 
             <!-- Topbar -->
-            @include('dashboard.navbar')
+            @if (auth()->user()->isAdmin()) 
+                @include('dashboard-user.navbar')
+            @elseif(!auth()->user()->isAdmin()) 
+                @include('dashboard-user.navbar')
+            @endif
             <!-- End of Topbar -->
 
             <div class="font-sans antialiased">
