@@ -6,12 +6,6 @@
     <title>Neoxero App</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
     <style>
-        body {
-            font-family: 'Tajawal', sans-serif;
-        }
-        .navbar{
-            height: 75px;
-        }
         .hero {
             background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://www.imgcorporations.com/images/bg-img.jpg');
             background-size: cover;
@@ -34,56 +28,8 @@
 </head>
 <body>
 
-    <!-- الهيدر -->
-    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class="container">
-            <a class="navbar-brand" href="#">Test App</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-            <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
-                    <li class="nav-item">
-                        <a href="{{ url('/form') }}" class="nav-link font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Form</a>
-                    </li>
-                    <li class="nav-item">
-                        <a href="{{ route('mandatory.form') }}" class="nav-link font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Form 2</a>
-                    </li>
-                    @if (Route::has('login'))
-                        <div class="d-flex">
-                            @auth
-                                <li class="nav-item">
-                                    <a href="{{ url('/dashboard') }}" class="nav-link font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Dashboard</a>
-                                </li>
-                                {{-- <li class="nav-item">
-                                    <a href="{{ url('logout') }}" class="nav-link font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">
-                                        <form method="POST" action="{{ route('logout') }}">
-                                            @csrf
-                                            <x-dropdown-link :href="route('logout')"
-                                                    onclick="event.preventDefault();
-                                                    this.closest('form').submit();"
-                                                    class="py-0 px-0">
-                                                <i class="icon-power mr-2"></i> Logout
-                                            </x-dropdown-link>
-                                        </form>
-                                    </a>
-                                </li> --}}
-                            @else
-                                <li class="nav-item">
-                                    <a href="{{ route('login') }}" class="nav-link font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Log in</a>
-                                </li>
-                                @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a href="{{ route('register') }}" class="ml-4 nav-link font-semibold text-gray-600 hover:text-gray-900 dark:text-gray-400 dark:hover:text-white focus:outline focus:outline-2 focus:rounded-sm focus:outline-red-500">Register</a>
-                                </li>
-                                @endif
-                            @endauth
-                        </div>
-                    @endif
-                </ul>
-            </div>
-        </div>
-    </nav>
+    <!-- Navbar -->
+    @include('navbar')
 
     <section class="hero">
         <div class="container">
@@ -92,10 +38,15 @@
             @if (Route::has('login'))
                 <div class="sm:fixed sm:top-0 sm:right-0 p-6 text-right z-10">
                     @auth
-                        <a href="{{ route('dashboard') }}" class="btn btn-light btn-lg">START NOW</a>
+                        @if (auth()->user()->isAdmin()) 
+                            <a href="{{ url('/dashboard') }}" class="btn btn-light btn-lg">START NOW</a>
+                        @elseif(!auth()->user()->isAdmin()) 
+                            <a href="{{ route('mandatory.form') }}" class="btn btn-light btn-lg">START NOW</a>
+                        @endif
                     @else
-                        <a href="{{ route('register') }}" class="btn btn-light btn-lg">START NOW</a>
+                        <a href="{{ route('login') }}" class="btn btn-light btn-lg">START NOW</a>
                     @endauth
+                    
                 </div>
             @endif
         </div>
