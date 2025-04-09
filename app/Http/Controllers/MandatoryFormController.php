@@ -14,7 +14,8 @@ class  MandatoryFormController extends Controller
     public function create()
     {
         $sectors = Sector::all();
-        return view('mandatoryForm', compact('sectors'));
+        $user = auth()->user();
+        return view('mandatoryForm', compact('sectors', 'user'));
     }
 
     public function getGroups($sectorId)

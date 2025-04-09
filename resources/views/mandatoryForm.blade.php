@@ -22,23 +22,19 @@
             <div class="form-title">بيانات مقدم الطلب</div>
             <div class="mb-2">
                 <label class="form-label">الاسم</label>
-                {{-- <input type="text" class="form-control" value="{{ auth()->user()->name }}" readonly> --}}
-                <input type="text" class="form-control" name="name" >
+                <input type="text" class="form-control" value="{{ auth()->user()->name }}" readonly>
             </div>
             <div class="mb-2">
                 <label class="form-label">الدور الوظيفي</label>
-                {{-- <input type="text" class="form-control" value="{{ auth()->user()->role ?? '---' }}" readonly> --}}
-                <input type="text" class="form-control" name="role">
+                <input type="text" class="form-control" value="{{ auth()->user()->role ?? '---' }}" readonly>
             </div>
             <div class="mb-2">
                 <label class="form-label">البريد الإلكتروني</label>
-                {{-- <input type="email" class="form-control" value="{{ auth()->user()->email }}" readonly> --}}
-                <input type="email" class="form-control" name="email" >
+                <input type="email" class="form-control" value="{{ auth()->user()->email }}" readonly>
             </div>
             <div class="mb-2">
                 <label class="form-label">رقم الجوال</label>
-                {{-- <input type="text" class="form-control" value="{{ auth()->user()->phone }}" readonly > --}}
-                <input type="text" class="form-control" name="mobile" >
+                <input type="text" class="form-control" value="{{ auth()->user()->phone }}" readonly >
             </div>
         </div>
 

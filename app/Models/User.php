@@ -21,6 +21,7 @@ class User extends Authenticatable
         'name',
         'email',
         'password',
+        'phone',
     ];
 
     /**
@@ -52,5 +53,10 @@ class User extends Authenticatable
     public function productApplications()
     {
         return $this->hasMany(ProductApplication::class);
+    }
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
     }
 }
