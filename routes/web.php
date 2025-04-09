@@ -29,6 +29,8 @@ Route::middleware(['auth', 'user'])->group(function () {
     Route::post('mandatory-form', [MandatoryFormController::class, 'store'])->name('mandatory.store');
 
     Route::get('/orders', function () {
+        
+        // Fetch orders from the database or any other source
         return view('dashboard-user.orders');
     })->name('orders');
         
