@@ -9,8 +9,7 @@
     <meta name="description" content="">
     <meta name="author" content="">
 
-    <title> Dashboard</title>
-
+    <title> Dashboard </title>
 
 </head>
 

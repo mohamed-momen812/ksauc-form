@@ -32,7 +32,8 @@ class MandatoryRequest extends Model
         'local_content_certificate',
         'sfda_certificate',
         'other_certificate',
-        'notes'
+        'notes',
+        'status'
     ];
 
     public function user()

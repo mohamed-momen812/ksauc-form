@@ -3,9 +3,9 @@
 <!-- Page Wrapper -->
 <div id="wrapper">
     <!-- Sidebar -->
-    @if (auth()->user()->isAdmin()) 
+    @if (auth()->user()->isAdmin())
         @include('dashboard-admin.header')
-    @elseif(!auth()->user()->isAdmin()) 
+    @elseif(!auth()->user()->isAdmin())
         @include('dashboard-user.header')
     @endif
     <!-- End of Sidebar -->
@@ -17,9 +17,9 @@
         <div id="content">
 
             <!-- Topbar -->
-            @if (auth()->user()->isAdmin()) 
-                @include('dashboard-user.navbar')
-            @elseif(!auth()->user()->isAdmin()) 
+            @if (auth()->user()->isAdmin())
+                @include('dashboard-admin.navbar')
+            @elseif(!auth()->user()->isAdmin())
                 @include('dashboard-user.navbar')
             @endif
             <!-- End of Topbar -->
@@ -54,7 +54,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Your Website 2025</span>
                     </div>
                 </div>
             </footer>

@@ -47,6 +47,6 @@ class RegisteredUserController extends Controller
 
         Auth::login($user);
 
-        return redirect(route('dashboard.user', absolute: false));
+        return redirect(route('mandatory.form', absolute: false));
     }
 }

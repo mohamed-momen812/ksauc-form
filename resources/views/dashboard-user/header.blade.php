@@ -27,11 +27,11 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('dashboard') }}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard.user') }}">
                 <div class="sidebar-brand-icon ">
                     <i class="fab fa-laravel"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Test App</div>
+                <div class="sidebar-brand-text mx-3">ksauc</div>
             </a>
 
             <!-- Divider -->
@@ -47,7 +47,7 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="{{ url('dashboard-user') }}">
+                <a class="nav-link" href="{{ route('dashboard.user') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
@@ -58,7 +58,7 @@
 
             <!-- Nav Item - Orders -->
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('orders-user') }}">
+                <a class="nav-link" href="{{ route('orders.user') }}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Orders</span></a>
             </li>

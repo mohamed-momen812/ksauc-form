@@ -22,24 +22,23 @@
 
     <!-- Page Wrapper -->
 
-
         <!-- Sidebar -->
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ url('dashboard') }}">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="{{ route('dashboard.admin') }}">
                 <div class="sidebar-brand-icon ">
                     <i class="fab fa-laravel"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">Test App</div>
+                <div class="sidebar-brand-text mx-3">ksauc</div>
             </a>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0">
 
-            <!-- Nav Item - Dashboard -->
+            <!-- Nav Item - Home -->
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('/') }}">
+                <a class="nav-link" href="{{ route('home') }}">
                     <i class="fas fa-fw fa-home"></i>
                     <span>Home</span>
                 </a>
@@ -47,25 +46,24 @@
 
             <!-- Nav Item - Dashboard -->
             <li class="nav-item active">
-                <a class="nav-link" href="{{ url('dashboard') }}">
+                <a class="nav-link" href="{{ route('dashboard.admin') }}">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span>
                 </a>
             </li>
 
-            <!-- Nav Item - Dashboard -->
-            {{-- <li class="nav-item">
-                <a class="nav-link" href="{{ route('import.create') }}">
-                    <i class="fas fa-fw fa-plus"></i>
-                    <span>Import Data</span>
-                </a>
-            </li> --}}
-     
-            <!-- Nav Item - Tables -->
+            <!-- Nav Item - Orders -->
             <li class="nav-item">
-                <a class="nav-link" href="{{ url('orders-admin') }}">
+                <a class="nav-link" href="{{ route('orders.admin') }}">
                     <i class="fas fa-fw fa-table"></i>
                     <span>Orders</span></a>
+            </li>
+
+            <!-- Nav Item - Statistics -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('statistics.admin') }}">
+                    <i class="fas fa-fw fa-table"></i>
+                    <span>statistics</span></a>
             </li>
 
             <!-- Divider -->
