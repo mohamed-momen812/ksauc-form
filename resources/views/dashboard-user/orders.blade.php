@@ -17,7 +17,7 @@
     <div id="wrapper">
 
         <!-- Sidebar -->
-        @include('dashboard-admin.header')
+        @include('dashboard-user.header')
         <!-- End of Sidebar -->
 
         <!-- Content Wrapper -->
@@ -27,7 +27,7 @@
             <div id="content">
 
                 <!-- Topbar -->
-                @include('dashboard-admin.navbar')
+                @include('dashboard-user.navbar')
                 <!-- End of Topbar -->
 
                 <!-- Begin Page Content -->

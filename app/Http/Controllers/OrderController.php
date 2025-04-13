@@ -38,19 +38,20 @@ class OrderController extends Controller
     }
 
 
-    public function userOrder()
-    {
-        $orders = MandatoryRequest::where('user_id', auth()->user()->id)->get();
-        return view('dashboard-user.orders', compact( 'orders'));
-    }
-
+    
     public function showStatistics()
     {
         $totalOrders = MandatoryRequest::count();
         $confirmedOrders = MandatoryRequest::where('status', 'confirmed')->count();
         $refusedOrders = MandatoryRequest::where('status', 'refused')->count();
         $totalUsers = User::where('role', '!=', 'admin')->count();
-
+        
         return view('dashboard-admin.statistics', compact('totalOrders', 'confirmedOrders', 'refusedOrders', 'totalUsers'));
+    }
+    
+    public function userOrder()
+    {
+        $orders = MandatoryRequest::where('user_id', auth()->user()->id)->get();
+        return view('dashboard-user.orders', compact( 'orders'));
     }
 }
