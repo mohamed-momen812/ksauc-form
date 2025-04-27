@@ -66,6 +66,14 @@
                     <span>statistics</span></a>
             </li>
 
+            {{-- <!-- Nav Item - Dashboard -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('import.create') }}">
+                    <i class="fas fa-fw fa-plus"></i>
+                    <span>Import Data</span>
+                </a>
+            </li> --}}
+
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">
 

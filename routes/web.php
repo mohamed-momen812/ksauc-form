@@ -2,13 +2,16 @@
 
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ExcelImportController;
+use App\Http\Controllers\IndexController;
 use App\Http\Controllers\MandatoryFormController;
 use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
-Route::get('/', function () {
-    return view('index');
-})->name('home');
+Route::get('/', [IndexController::class, 'index'])->name('home');
+Route::get('/categories', [IndexController::class, 'index'])->name('home');
+Route::get('/categories/{category}', [IndexController::class, 'showCategoryProducts'])->name('showCategory');
+Route::get('/products/{product}', [IndexController::class, 'showProduct'])->name('showProduct');
+  
 
 require __DIR__.'/auth.php';
 
@@ -31,7 +34,7 @@ Route::middleware(['auth', 'user'])->group(function () {
 
     Route::get('/orders-user', [OrderController::class, 'userOrder'])->name('orders.user');
 
-});
+}); 
 
 
 Route::middleware(['auth', 'admin'])->group(function () {
