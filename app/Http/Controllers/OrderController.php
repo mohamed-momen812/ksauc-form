@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\MandatoryRequest;
+use App\Models\Sector;
 use App\Models\User;
 
 class OrderController extends Controller
@@ -53,5 +54,15 @@ class OrderController extends Controller
     {
         $orders = MandatoryRequest::where('user_id', auth()->user()->id)->get();
         return view('dashboard-user.orders', compact( 'orders'));
+    }
+
+    public function showUserstatistics()
+    {
+        $userRequests = MandatoryRequest::where('user_id', auth()->id())->get();
+        $ordersCount = $userRequests->count();
+        $sectorIds = $userRequests->pluck('sector_id')->unique();
+        $sectors = Sector::whereIn('id', $sectorIds)->get();
+
+        return view('dashboard-user.index', compact('ordersCount', 'sectors'));
     }
 }

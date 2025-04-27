@@ -16,9 +16,7 @@ Route::get('/products/{product}', [IndexController::class, 'showProduct'])->name
 require __DIR__.'/auth.php';
 
 Route::middleware(['auth', 'user'])->group(function () {
-    Route::get('/dashboard-user', function () {
-        return view('dashboard-user.index');
-    })->name('dashboard.user');
+    Route::get('/dashboard-user', [OrderController::class, 'showUserstatistics'])->name('dashboard.user');
 
     Route::get('/profile-user', [ProfileController::class, 'edit'])->name('user.profile.edit');
     Route::patch('/profile-user', [ProfileController::class, 'update'])->name('user.profile.update');
