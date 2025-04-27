@@ -3,17 +3,39 @@
 namespace App\Http\Controllers;
 
 use App\Models\Category;
+use App\Models\Group;
 use App\Models\Product;
+use App\Models\Sector;
 
 class IndexController extends Controller
 {
     public function index()
     {
-        $categories = Category::withCount('products')
+        $sectos = Sector::withCount('groups')
+                ->orderBy('groups_count', 'desc')
+                ->get()
+                ->unique('name_ar');
+        return view('index', compact('sectos'));
+    }
+
+    public function showSectorGroups(Sector $sector)
+    {
+        $groups = Group::where('sector_id', $sector->id)
+                ->withCount('categories')
+                ->orderBy('categories_count', 'desc')
+                ->get()
+                ->unique('name_ar');
+        return view('sectorGroup', compact('groups'));
+    }
+
+    public function showGroupCategories(Group $group)
+    {
+        $categories = Category::where('group_id', $group->id)
+                ->withCount('products')
                 ->orderBy('products_count', 'desc')
                 ->get()
                 ->unique('name_ar');
-        return view('index', compact('categories'));
+        return view('groupCategories', compact('categories'));
     }
 
     public function showCategoryProducts(Category $category)
@@ -27,4 +49,5 @@ class IndexController extends Controller
     {
         return view('product', compact('product'));
     }
+
 }

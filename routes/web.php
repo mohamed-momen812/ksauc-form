@@ -8,9 +8,12 @@ use App\Http\Controllers\OrderController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', [IndexController::class, 'index'])->name('home');
-Route::get('/categories', [IndexController::class, 'index'])->name('home');
-Route::get('/categories/{category}', [IndexController::class, 'showCategoryProducts'])->name('showCategory');
-Route::get('/products/{product}', [IndexController::class, 'showProduct'])->name('showProduct');
+Route::get('/groups/{sector}', [IndexController::class, 'showSectorGroups'])->name('showSectorGroups');
+Route::get('/categories/{group}', [IndexController::class, 'showGroupCategories'])->name('showGroupCategories');
+Route::get('/products/{category}', [IndexController::class, 'showCategoryProducts'])->name('showCategoryProducts');
+
+Route::get('/showProduct/{product}', [IndexController::class, 'showProduct'])->name('showProduct');
+
   
 
 require __DIR__.'/auth.php';
