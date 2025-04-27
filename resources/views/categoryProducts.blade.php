@@ -106,11 +106,7 @@
 
     <section class="py-5 bg-light">
         <div class="container py-5">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}">الفئات</a>/{{ $category->name_ar }}</li>
-                </ol>
-            </nav>
+            
             
             <div class="row mb-4">
                 <div class="col-12">

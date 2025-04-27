@@ -58,10 +58,16 @@ class OrderController extends Controller
 
     public function showUserstatistics()
     {
+
         $userRequests = MandatoryRequest::where('user_id', auth()->id())->get();
         $ordersCount = $userRequests->count();
         $sectorIds = $userRequests->pluck('sector_id')->unique();
-        $sectors = Sector::whereIn('id', $sectorIds)->get();
+
+        $sectors = Sector::whereIn('id', $sectorIds)
+                    ->withCount(['mandatoryRequests' => function ($q) {
+                        $q->where('user_id', auth()->id());
+                    }])
+                    ->get();
 
         return view('dashboard-user.index', compact('ordersCount', 'sectors'));
     }

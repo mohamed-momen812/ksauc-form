@@ -107,11 +107,7 @@
     <!-- Groups Section -->
     <section class="py-5 bg-gray-100">
         <div class="container py-5">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}">القطاعات</a></li>
-                </ol>
-            </nav>
+           
 
             <h1 class="text-center mb-5">المجموعات المتاحه</h1>
     

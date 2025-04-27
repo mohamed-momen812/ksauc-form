@@ -108,12 +108,6 @@
     <section class="py-5 bg-gray-100">
         <div class="container py-5">
 
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}">القطاعات</a></li>
-                </ol>
-            </nav>
-
             <h1 class="text-center mb-5">الفئات المتاحه</h1>
     
             <div class="row gx-0 gy-5 aos-init aos-animate">

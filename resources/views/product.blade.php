@@ -1,126 +1,87 @@
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{{ $product->name_ar }} - Neoxero App</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>{{ $product->name_ar }} - Neoxero App</title>
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer" />
+        
+        <style>
+            body { background: #f8f9fa; font-family: 'Tajawal', sans-serif; }
+            .product-card {
+                background: #fff;
+                border: 1px solid #e3e3e3;
+                border-radius: 12px;
+                box-shadow: 0px 5px 20px rgba(0,0,0,0.1);
+                padding: 30px;
+                margin-top: 30px;
+                text-align: center;
+            }
+            .product-card h2 {
+                font-size: 1.75rem;
+                margin-bottom: 10px;
+                color: #333;
+            }
+            .product-card p {
+                color: #666;
+                font-size: 1rem;
+                margin-bottom: 15px;
+            }
+            .product-info {
+                margin-top: 20px;
+                text-align: right;
+            }
+            .product-info h5 {
+                font-weight: bold;
+                color: #3498db;
+                margin-bottom: 10px;
+            }
+            .product-info p {
+                margin-bottom: 8px;
+            }
+            .section-title {
+                font-size: 2.5rem;
+                font-weight: 700;
+                text-align: center;
+                color: #2c3e50;
+                margin-bottom: 2rem;
+            }
+            .highlight {
+                color: #e74c3c;
+                font-weight: bold;
+            }
+        </style>
+    </head>
     
-    <style>
-        .hero {
-            background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), url('https://www.imgcorporations.com/images/bg-img.jpg');
-            background-size: cover;
-            color: white;
-            text-align: center;
-            padding: 13em 0;
-            height: 93dvh;
-        }
-        .hero h1 {
-            font-size: 3rem;
-            font-weight: bold;
-        }
-        .hero p {
-            font-size: 1.2rem;
-        }
-        .serv-img {
-            width: 300px;
-            height: 200px;
-            object-fit: cover;
-            border-radius: 10px;
-        }
-        .category-box {
-            background: white;
-            border: 1px solid #eeeeee;
-            /* border-radius: 15px; */
-            /* box-shadow: 0 5px 15px rgba(0,0,0,0.1); */
-            transition: all 0.3s ease;
-            overflow: hidden;
-            height: 100%;
-            display: flex;
-            flex-direction: column;
-            height: 150px;
-        }
-        .category-box:hover {
-            transform: translateY(-1px);
-            box-shadow: 0 15px 30px rgba(0,0,0,0.2);
-            border: 1px solid #3498db;
-        }
-        .category-img {
-            width: 100%;
-            height: 200px;
-            object-fit: cover;
-        }
-        .category-body {
-            padding: 20px;
-            flex-grow: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
-        }
-        .category-title {
-            font-size: 1.5rem;
-            font-weight: 600;
-            margin-bottom: 15px;
-            color: #333;
-            font-family: "IBM Plex Sans Arabic", serif;
-        }
-        .category-description {
-            color: #666;
-            margin-bottom: 15px;
-        }
-        .category-btn {
-            background: #3498db !important;
-            border: none !important;
-        }
-        .section-title {
-            font-size: 2.5rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            color: #2c3e50;
-            position: relative;
-            padding-bottom: 15px;
-        }
-        .section-title:after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background: #3498db;
-        }
-        .section-subtitle {
-            color: #7f8c8d;
-            font-size: 1.1rem;
-            margin-bottom: 3rem;
-        }
-    </style>
-</head>
-<body>
-
-    @include('navbar')
-
-    <section class="py-5">
+    <body>
+        @include('navbar')
+    
         <div class="container">
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="{{ route('home') }}">الفئات</a></li>
-                </ol>
-            </nav>
-
-            <div class="col-xxl-3 col-lg-4 col-sm-6 item">
-                <div class="category-box">
-                    <div class="category-body">
-                        <div>
-                            <h2 class="category-title">{{ $product->name_ar }}</h2>
-                            <h2 class="category-title">{{ $product->name_en }}</h2>
+    
+            <div class="row justify-content-center">
+                <div class="col-lg-8 col-md-10">
+                    <div class="product-card">
+                        <h2>{{ $product->name_ar }}</h2>
+                        <h2>{{ $product->name_en }}</h2>
+                        <p>{{ $product->description_ar }}</p>
+                        <p>{{ $product->description_en }}</p>
+    
+                        <div class="product-info">
+                            <h5>السقف السعري</h5>
+                            <p>{{ number_format($product->price_ceiling, 2) }}%</p>
+    
+                            <h5>تاريخ التطبيق</h5>
+                            <p>{{ \Carbon\Carbon::parse($product->effective_date)->format('d-m-Y') }}</p>
+    
+                            <h6 class="highlight text-center mt-4">
+                                يشترط وجود شهادة المحتوى المحلي للمصنع اعتبارًا من هذا التاريخ
+                            </h6>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-</body>
+    </body>
+    
 </html>
