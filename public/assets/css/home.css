@@ -1,0 +1,147 @@
+/* General */
+body {
+    font-family: 'Cairo', sans-serif !important;
+}
+
+/* Home Section */
+.home-sec {
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
+                url('https://img.freepik.com/premium-photo/contemporary-minimalistic-black-interior-with-workplace-computer-monitor-mock-up-place-wall-3d-rendering_670147-84018.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: white;
+    position: relative;
+}
+
+.home-sec-content {
+    max-width: 700px;
+    padding: 20px;
+    animation: fadeInDown 1s ease-out;
+}
+
+.home-sec h1 {
+    font-size: 3.5rem;
+    font-weight: bold;
+    margin-bottom: 20px;
+}
+
+.home-sec p {
+    font-size: 1.5rem;
+    margin-bottom: 30px;
+    color: #f1f1f1;
+}
+
+.home-sec .btn-primary {
+    background-color: #3498db;
+    border: none;
+    padding: 12px 30px;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.home-sec .btn-primary:hover {
+    background-color: #2980b9;
+    transform: scale(1.05);
+}
+
+/* Categories */
+.category-box {
+    background: #ffffff;
+    border: 1px solid #e0e0e0;
+    border-radius: 15px;
+    overflow: hidden;
+    transition: 0.3s ease all;
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.category-box:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+    border-color: #3498db;
+}
+
+.category-body {
+    padding: 20px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.category-title {
+    font-size: 1.8rem;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.category-body p {
+    color: #7f8c8d;
+    font-size: 1rem;
+    margin-bottom: 20px;
+}
+
+.category-btn {
+    background: #3498db !important;
+    border: none;
+    padding: 12px;
+    border-radius: 10px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.category-btn:hover {
+    background: #2980b9 !important;
+}
+
+/* Sections */
+.section-title {
+    font-size: 2.7rem;
+    font-weight: 800;
+    text-align: center;
+    margin-bottom: 2rem;
+    position: relative;
+    color: #34495e;
+}
+
+.section-title::after {
+    content: "";
+    position: absolute;
+    bottom: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80px;
+    height: 4px;
+    background: #3498db;
+    border-radius: 5px;
+}
+
+.serv-img {
+    width: 100%;
+    max-width: 300px;
+    height: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+}
+
+/* Animations */
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px);
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

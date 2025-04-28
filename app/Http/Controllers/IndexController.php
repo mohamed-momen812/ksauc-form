@@ -25,7 +25,8 @@ class IndexController extends Controller
                 ->orderBy('categories_count', 'desc')
                 ->get()
                 ->unique('name_ar');
-        return view('sectorGroup', compact('groups'));
+
+        return view('sectorGroup', compact('groups', 'sector'));
     }
 
     public function showGroupCategories(Group $group)
@@ -35,7 +36,8 @@ class IndexController extends Controller
                 ->orderBy('products_count', 'desc')
                 ->get()
                 ->unique('name_ar');
-        return view('groupCategories', compact('categories'));
+                
+        return view('groupCategories', compact('categories', 'group'));
     }
 
     public function showCategoryProducts(Category $category)
